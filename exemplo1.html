@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-6"><!--Inicio do Formulario-->
+                <form action="" method="get">
+                    <fieldset>
+                        <legend>Cadastro de Contato</legend>
+                        <div class="form-group"><!--Inicio do campo Nome-->
+                            <label for="nome">Nome</label>
+                            <input type="text" 
+                                class="form-control" 
+                                name="nome" 
+                                id="nome">
+                        </div><!--Final do campo Nome-->
+                        <div class="form-group"><!--Inicio do campo Fone-->
+                            <label for="fone">Fone</label>
+                            <input type="tel" 
+                                class="form-control" 
+                                name="fone" 
+                                id="fone">
+                        </div><!--Final do campo Fone-->
+                        <div class="form-group"><!--Inicio do campo Sexo-->
+                            <div class="form-check form-check-inline">
+                                <label for="masc">
+                                    <input type="radio" name="sexo" id="masc" checked>
+                                    Masculino
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <label for="fem">
+                                    <input type="radio" name="sexo" id="fem">
+                                    Feminino
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <label for="indef">
+                                    <input type="radio" name="sexo" id="indef">
+                                    Não especificar
+                                </label>
+                            </div>
+                        </div><!--Final do campo Sexo-->
+                        <div class="form-group"><!--Inicio do campo Cidade-->
+                            <label for="cidade">Cidade</label>
+                            <select class="form-control" name="cidade" id="cidade">
+                                <option>Natal</option>
+                                <option>Mossoró</option>
+                                <option>Parnamirim</option>
+                                <option>São Gonçalo do Amarante</option>
+                            </select>
+                        </div><!--Final do campo Cidade-->
+                        <div class="form-group"><!--Inicio do campo de Botões-->
+                            <button type="submit" class="btn btn-success">Salvar</button>
+                            <button type="reset" class="btn btn-danger">Limpar</button>
+                        </div><!--Final do campo de Botões-->
+                    </fieldset>
+                </form>
+            </div><!--Final do Formulario-->
+            <div class="col-6"><!--Inicio da Tabela-->
+
+            </div><!--Final da Tabela -->
+        </div>
+    </div>
+</body>
+</html>
