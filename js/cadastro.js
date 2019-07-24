@@ -50,7 +50,7 @@ function ehNumero(numero) {
 
 function insereNaTabela(nome, fone, sexo, cidade) {
     let tabela = document
-            .getElementsByTagName('lista-contatos')
+            .getElementById('lista-contatos')
             .getElementsByTagName('tbody')[0];
     
     let ultimaLinha = tabela.rows.length;
