@@ -1,16 +1,16 @@
 function cadastrar() {
 
-    let formulario = [];
-
     let nome = validaNome(document.getElementById('nome').value);
-    formulario.push(nome);
+    if (nome == false) {
+        alert('Insira um nome válido!');
+        document.getElementById('nome').focus();
+        return;
+    }
 
     let fone = document.getElementById('fone').value;
-    formulario.push(fone);
-
+ 
     let cidade = document.getElementById('cidade').value;
-    formulario.push(cidade);
-
+ 
     let sexo = '';
     if (document.getElementById('masc').checked) {
         sexo = 'Masculino';
@@ -19,9 +19,8 @@ function cadastrar() {
     } else {
         sexo = 'Prefiro não comentar';
     }
-    formulario.push(sexo);
-
-    console.log(formulario);
+ 
+    insereNaTabela(nome, fone, sexo, cidade);
 
     limparFormulario();
 
@@ -43,4 +42,44 @@ function validaNome(nome) {
         }
     }
     return texto;
+}
+
+function ehNumero(numero) {
+    return !isNaN(numero);
+}
+
+function insereNaTabela(nome, fone, sexo, cidade) {
+    let tabela = document
+            .getElementsByTagName('lista-contatos')
+            .getElementsByTagName('tbody')[0];
+    
+    let ultimaLinha = tabela.rows.length;
+    
+    let linha = tabela.insertRow(ultimaLinha);
+    
+    let campoId = linha.insertCell(0);
+    let campoNome = linha.insertCell(1);
+    let campoFone = linha.insertCell(2);
+    let campoSexo = linha.insertCell(3);
+    let campoCidade = linha.insertCell(4);
+    let acoes = linha.insertCell(5);
+
+    campoId.innerHTML = ultimaLinha + 1;
+    campoNome.innerHTML = nome;
+    campoFone.innerHTML = fone;
+    campoSexo.innerHTML = sexo;
+    campoCidade.innerHTML = cidade;
+    acoes.innerHTML = insereBotoesAcoes();
+}
+
+function insereBotoesAcoes() {
+    let botaoEditar = '<button class="btn btn-primary btn-sm">';
+    botaoEditar += '<i class="fas fa-pencil-alt"></i>';
+    botaoEditar += '</button>';
+
+    let botaoRemover = '<button class="btn btn-danger btn-sm">';
+    botaoRemover += '<i class="fas fa-trash-alt"></i>';
+    botaoRemover += '</button>';
+
+    return botaoEditar + botaoRemover;
 }
