@@ -69,11 +69,11 @@ function insereNaTabela(nome, fone, sexo, cidade) {
     campoFone.innerHTML = fone;
     campoSexo.innerHTML = sexo;
     campoCidade.innerHTML = cidade;
-    acoes.innerHTML = insereBotoesAcoes();
+    acoes.innerHTML = insereBotoesAcoes(ultimaLinha + 1);
 }
 
-function insereBotoesAcoes() {
-    let botaoEditar = '<button class="btn btn-primary btn-sm">';
+function insereBotoesAcoes(id) {
+    let botaoEditar = '<button onclick="buscaContatoPeloId(' + id + ')" class="btn btn-primary btn-sm">';
     botaoEditar += '<i class="fas fa-pencil-alt"></i>';
     botaoEditar += '</button>';
 
@@ -82,4 +82,18 @@ function insereBotoesAcoes() {
     botaoRemover += '</button>';
 
     return botaoEditar + botaoRemover;
+}
+
+function buscaContatoPeloId(id) {
+    let body = document
+        .getElementById('lista-contatos')
+        .getElementsByTagName('tbody')[0];
+    let qtdLinhas = body.rows.length;
+    for (let i = 0; i < qtdLinhas; i++) {
+        if (body.rows[i].cells[0].innerHTML == id) {
+            let inputNome = document.getElementById('nome');
+            inputNome.value = body.rows[i].cells[1].innerHTML;
+            return;
+        }
+    }
 }
