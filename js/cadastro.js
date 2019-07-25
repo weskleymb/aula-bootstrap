@@ -73,7 +73,7 @@ function insereNaTabela(nome, fone, sexo, cidade) {
 }
 
 function insereBotoesAcoes(id) {
-    let botaoEditar = '<button onclick="buscaContatoPeloId(' + id + ')" class="btn btn-primary btn-sm">';
+    let botaoEditar = '<button type="button" onclick="buscaContatoPeloId(' + id + ')" class="btn btn-primary btn-sm">';
     botaoEditar += '<i class="fas fa-pencil-alt"></i>';
     botaoEditar += '</button>';
 
@@ -93,6 +93,21 @@ function buscaContatoPeloId(id) {
         if (body.rows[i].cells[0].innerHTML == id) {
             let inputNome = document.getElementById('nome');
             inputNome.value = body.rows[i].cells[1].innerHTML;
+            
+            let inputFone = document.getElementById('fone');
+            inputFone.value = body.rows[i].cells[2].innerHTML;
+
+            let sexo = body.rows[i].cells[3].innerHTML.toLowerCase();
+            if (sexo == 'masculino') {
+                document.getElementById('masc').checked = true;
+            } else if (sexo == 'feminino') {
+                document.getElementById('fem').checked = true;
+            } else {
+                document.getElementById('indef').checked = true;
+            }
+
+            let selectCidade = document.getElementById('cidade');
+            selectCidade.value = body.rows[i].cells[4].innerHTML;
             return;
         }
     }
